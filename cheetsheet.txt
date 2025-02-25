@@ -6,3 +6,14 @@ SEQUELIZE - ORM (object-relations mapping framework) - програмний ка
 - коннект між беком і БД
 
 Версійна міграція - це перехід від однієї консистентої (узгодженої) схеми БД до наступної версії.
+
+
+Основні типи даних для прописування моделям:
+https://sequelize.org/docs/v6/core-concepts/model-basics/#data-types
+
+
+
+
+CREATE TABLE users (
+    id serial PRIMARY KEY,
+)
