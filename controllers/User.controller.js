@@ -1,4 +1,4 @@
-const {User} = require('../models');
+const {User, Group} = require('../models');
 
 module.exports.createOne = async (req, res, next) => {
     try {
@@ -9,6 +9,27 @@ module.exports.createOne = async (req, res, next) => {
         res.status(400).send(error);
     }
 }
+
+module.exports.getUserWithGroups = async (req, res, next) => {
+    try {
+        const {params: {userId}} = req;
+        const userWithGroups = await User.findAll({
+            where: {
+                id: Number(userId)
+            },
+            include: [{
+                model: Group
+            }]
+        
+        });
+        res.status(200).send({data: userWithGroups})
+    } catch(error) {
+        next(error);
+    }
+}
+
+
+
 
 module.exports.getAll = async (req, res, next) => {
     try {

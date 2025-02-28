@@ -5,5 +5,7 @@ const groupRouter = exress.Router();
 
 groupRouter.post('/', GroupController.createOne);
 groupRouter.put('/:groupId/:userId', GroupController.addUserToGroup);
+groupRouter.get('/:groupId', GroupController.getGroupWithMembers);
+groupRouter.get('/:groupId/count', GroupController.countUsersInGroup);
 
 module.exports = groupRouter;
