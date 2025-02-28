@@ -17,6 +17,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       imagePath: {
+        field: 'image_path',
         type: Sequelize.TEXT
       },
       createdAt: {

@@ -1,4 +1,4 @@
-const {ValidationError} = require('sequelize');
+const {ValidationError, DatabaseError} = require('sequelize');
 const NotFoundError = require('./errors/NotFoundError');
 
 module.exports.errorHandler = async (err, req, res, next) => {
@@ -9,6 +9,15 @@ module.exports.errorHandler = async (err, req, res, next) => {
                 message: err.message
             }})
    }
+
+   if (err instanceof DatabaseError) {
+    return res.status(500).send({
+        errors: {
+            message: err.message
+        }
+    })
+   }
+
 
    if (err instanceof NotFoundError) {
     return res.status(404).send({errors: {

@@ -26,6 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING
     },
     imagePath: {
+      field: 'image_path',
       type: DataTypes.TEXT
     }
   }, {
