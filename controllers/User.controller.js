@@ -33,7 +33,12 @@ module.exports.getUserWithGroups = async (req, res, next) => {
 
 module.exports.getAll = async (req, res, next) => {
     try {
-        const users = await User.findAll();
+        const {query} = req;
+        console.log(query);
+        const users = await User.findAll({
+            limit: req.limit,
+            offset: req.offset
+        });
         res.status(200).send({data:users});
     } catch (error) {
 
