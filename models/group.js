@@ -13,8 +13,10 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Group.belongsToMany(models.User, {
         through: 'users_to_groups',
-        foreignKey: 'group_id'
-      })
+        foreignKey: 'group_id',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE'
+      });
     }
   }
   Group.init({
@@ -34,6 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     modelName: 'Group',
     tableName: 'groups',
     underscored: true
+    // paranoid: true
   });
   return Group;
 };
