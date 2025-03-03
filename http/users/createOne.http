@@ -2,9 +2,9 @@ POST http://localhost:5000/api/users/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "firstName": "Jane",
-    "lastName": "Doe",
-    "email": "joe211@jfds.fsd",
+    "firstName": "Nick",
+    "lastName": "Snow",
+    "email": "joe3231@jfds.fsd",
     "password": "qwerty",
     "gender": "male",
     "birthday": "2020-01-01"
