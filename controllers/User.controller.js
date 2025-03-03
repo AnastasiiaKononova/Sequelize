@@ -44,7 +44,12 @@ module.exports.getOne = async (req, res, next) => {
     try {
         const {params: {userId}} = req;
         // дописати контроллер на отримання 1 юзера за його PrimaryKey
-        const user = await User.findByPk(userId);
+        const user = await User.findByPk(userId, {
+            // attributes:  ['firstName', 'lastName'] -- в такому випадку в рез.об'єкті будуть ТІЛЬКИ firstName, lastName
+            attributes: {
+                exclude: ['password']
+            }
+        });
         res.status(200).send({data:user});
     } catch(error) {
 
