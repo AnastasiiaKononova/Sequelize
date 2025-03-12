@@ -138,3 +138,45 @@ StudentSubjects.init(
 1 add migration + model task  
 2 controller    
       
+
+
+
+
+      Робота з файлами на сервері
+
+----- Що передаємо -----
+
+- Об'єкти в json -
+{}, [], number, string, boolean, null
+
+{} => JSON => app.use(express.json()) => {}
+Content-Type: application/json
+
+АБО
+
+- Зображення (з текстом) -
+
+image (+{})
+Content-Type: multipart/form-data
+
+Для збереження файлів multer
+Для отримання файлів - використаємо express 
+
+----- Роздача статичних файлів -----
+
+app.use(express.static('public'));
+
+Якщо файл збережено як
+public
+   cat.jpg
+Тоді до нього можна звернутись як   
+http://host:port/cat.jpeg   
+
+----- Збереження файлів -----
+
+multer => save file => req.file, req.body
+                       saved filename 
+                       
+1. multer збереже файл в статичній папці
+   згенерує ім'я файла і прокине далі
+2. Далі контроллер збереже ім'я файла в БД для, наприклад, користувача userId                       
